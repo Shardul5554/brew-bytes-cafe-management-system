@@ -1,0 +1,2764 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>BrewBytes Café</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+<!-- ================= LOGIN PAGE ================= -->
+
+<div id="loginPage">
+
+    <div class="login-box">
+
+        <div class="login-logo">☕</div>
+
+        <h1>BrewBytes Café</h1>
+
+        <p>Cafe Management System</p>
+
+        <input
+            type="text"
+            id="loginUsername"
+            placeholder="Username">
+
+        <input
+            type="password"
+            id="loginPassword"
+            placeholder="Password">
+
+        <button onclick="login()">
+            Login
+        </button>
+
+        <p id="loginError"></p>
+
+    </div>
+
+</div>
+
+
+<!-- ================= MAIN APPLICATION ================= -->
+
+<div id="appContent">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <div class="sidebar">
+
+        <div class="logo">
+
+            <h2>☕ BrewBytes Café</h2>
+
+            <p>Cafe Management System</p>
+
+        </div>
+
+
+        <div class="menu">
+
+            <a class="active"
+               onclick="showSection('dashboard', this)">
+                🏠 Dashboard
+            </a>
+
+            <a onclick="showSection('menuSection', this)">
+                🍽️ Menu
+            </a>
+
+            <a onclick="showSection('orders', this)">
+                🛒 Orders
+            </a>
+
+            <a onclick="showSection('tables', this)">
+                🪑 Tables
+            </a>
+
+            <a onclick="showSection('reservation', this)">
+                📅 Reservations
+            </a>
+
+            <a onclick="showSection('billing', this)">
+                💰 Billing
+            </a>
+
+            <!-- SUPPLIER BEFORE LOGOUT -->
+
+            <a onclick="showSection('supplier', this)">
+                📦 Supplier & Quantity
+            </a>
+
+            <a onclick="logout()">
+                🚪 Logout
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <div class="main">
+
+        <div class="header">
+
+            <div>
+
+                <h1>BrewBytes Café</h1>
+
+                <p>
+                    Traditional taste, modern management
+                </p>
+
+            </div>
+
+            <div class="date" id="date"></div>
+
+        </div>
+
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <section id="dashboard"
+                 class="section active">
+
+            <h2>Dashboard</h2>
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>Today's Sales</h3>
+
+                    <p id="totalSales">
+                        ₹0
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>Total Orders</h3>
+
+                    <p id="orderCount">
+                        0
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>Customers</h3>
+
+                    <p id="customerCount">
+                        0
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>Available Tables</h3>
+
+                    <p id="availableTables">
+                        5
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-box">
+
+                <h2>
+                    Welcome to BrewBytes Café ☕
+                </h2>
+
+                <br>
+
+                <p>
+                    Manage your cafe menu, customer orders,
+                    table reservations, supplier stock,
+                    billing and daily business operations
+                    from one place.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= MENU ================= -->
+
+        <section id="menuSection"
+                 class="section">
+
+            <h2>Cafe Menu</h2>
+
+            <p>
+                Select items to add them to the current order.
+            </p>
+
+            <br>
+
+
+            <div class="menu-grid">
+
+                <div class="food-card">
+
+ <img src="images/chai.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+                   
+                    <h3>Masala Chai</h3>
+
+                    <p>
+                        Traditional Indian spiced tea
+                    </p>
+
+                    <div class="price">₹60</div>
+
+                    <button onclick="addToCart('Masala Chai',60)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                     <img src="images/greentea.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>Green Tea</h3>
+
+                    <p>
+                        Light and refreshing tea
+                    </p>
+
+                    <div class="price">₹70</div>
+
+                    <button onclick="addToCart('Green Tea',70)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                    <img src="images/hotchocolate.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+                    <h3>Hot Chocolate</h3>
+
+                    <p>
+                        Warm creamy chocolate drink
+                    </p>
+
+                    <div class="price">₹100</div>
+
+                    <button onclick="addToCart('Hot Chocolate',100)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                   <img src="images/mangolassi.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>Mango Lassi</h3>
+
+                    <p>
+                        Fresh mango yogurt drink
+                    </p>
+
+                    <div class="price">₹90</div>
+
+                    <button onclick="addToCart('Mango Lassi',90)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+
+                 <img src="images/milkshake.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>Milkshake</h3>
+
+                    <p>
+                        Thick and creamy milkshake
+                    </p>
+
+                    <div class="price">₹100</div>
+
+                    <button onclick="addToCart('Milkshake',100)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                    <div class="icon">🥤</div>
+
+                    <h3>Cold Drink</h3>
+
+                    <p>
+                        Chilled carbonated soft drink
+                    </p>
+
+                    <div class="price">₹100</div>
+
+                    <button onclick="addToCart('Cold Drink',100)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                     <img src="images/coldcoffee.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>Cold Coffee</h3>
+
+                    <p>
+                        Chilled coffee with ice cream
+                    </p>
+
+                    <div class="price">₹110</div>
+
+                    <button onclick="addToCart('Cold Coffee',110)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                 <img src="images/espresso.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+                    <h3>Espresso</h3>
+
+                    <p>
+                        Strong and rich coffee
+                    </p>
+
+                    <div class="price">₹120</div>
+
+                    <button onclick="addToCart('Espresso',120)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                    
+                 <img src="images/chocolatecoffee.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>Chocolate Coffee</h3>
+
+                    <p>
+                        Creamy coffee with chocolate
+                    </p>
+
+                    <div class="price">₹110</div>
+
+                    <button onclick="addToCart('Chocolate Coffee',110)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                   
+                 <img src="images/icedlatte.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>Iced Latte</h3>
+
+                    <p>
+                        Espresso with chilled milk
+                    </p>
+
+                    <div class="price">₹100</div>
+
+                    <button onclick="addToCart('Iced Latte',100)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                    
+                 <img src="images/cappuccino.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>Cappuccino</h3>
+
+                    <p>
+                        Espresso with steamed milk
+                    </p>
+
+                    <div class="price">₹140</div>
+
+                    <button onclick="addToCart('Cappuccino',140)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                     <img src="images/vegsandwich.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>Veg Sandwich</h3>
+
+                    <p>
+                        Fresh vegetables and cheese
+                    </p>
+
+                    <div class="price">₹120</div>
+
+                    <button onclick="addToCart('Veg Sandwich',120)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                     <img src="images/chickensandwich.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>Chicken Sandwich</h3>
+
+                    <p>
+                        Grilled chicken sandwich
+                    </p>
+
+                    <div class="price">₹130</div>
+
+                    <button onclick="addToCart('Chicken Sandwich',130)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                     <img src="images/vegbuger.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>Veg Burger</h3>
+
+                    <p>
+                        Crispy vegetable burger
+                    </p>
+
+                    <div class="price">₹100</div>
+
+                    <button onclick="addToCart('Veg Burger',100)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                     <img src="images/chickenbuger.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>Chicken Burger</h3>
+
+                    <p>
+                        Crispy chicken burger
+                    </p>
+
+                    <div class="price">₹130</div>
+
+                    <button onclick="addToCart('Chicken Burger',130)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                     <img src="images/frenchfries.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>French Fries</h3>
+
+                    <p>
+                        Crispy golden potato fries
+                    </p>
+
+                    <div class="price">₹90</div>
+
+                    <button onclick="addToCart('French Fries',90)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                     <img src="images/periperifires.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>Peri-Peri Fries</h3>
+
+                    <p>
+                        Spicy peri-peri fries
+                    </p>
+
+                    <div class="price">₹100</div>
+
+                    <button onclick="addToCart('Peri-Peri Fries',100)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                     <img src="images/pasta.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>Pasta</h3>
+
+                    <p>
+                        Creamy or tomato pasta
+                    </p>
+
+                    <div class="price">₹150</div>
+
+                    <button onclick="addToCart('Pasta',150)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                     <img src="images/paneercheesepizza.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>Paneer Cheese Pizza</h3>
+
+                    <p>
+                        Paneer and cheese pizza
+                    </p>
+
+                    <div class="price">₹190</div>
+
+                    <button onclick="addToCart('Paneer Cheese Pizza',190)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                    <img src="images/cornpizza.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>Corn Pizza</h3>
+
+                    <p>
+                        Sweet corn and cheese pizza
+                    </p>
+
+                    <div class="price">₹160</div>
+
+                    <button onclick="addToCart('Corn Pizza',160)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                     <img src="images/margheritapizza.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>Margherita Pizza</h3>
+
+                    <p>
+                        Classic tomato and mozzarella pizza
+                    </p>
+
+                    <div class="price">₹140</div>
+
+                    <button onclick="addToCart('Margherita Pizza',140)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                     <img src="images/chocolatecake.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>Chocolate Cake</h3>
+
+                    <p>
+                        Classic chocolate cake
+                    </p>
+
+                    <div class="price">₹160</div>
+
+                    <button onclick="addToCart('Chocolate Cake',160)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                     <img src="images/chocolatebrowni.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>Chocolate Brownie</h3>
+
+                    <p>
+                        Soft fudgy chocolate brownie
+                    </p>
+
+                    <div class="price">₹90</div>
+
+                    <button onclick="addToCart('Chocolate Brownie',90)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                     <img src="images/donut.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>Donut</h3>
+
+                    <p>
+                        Soft sweet donut
+                    </p>
+
+                    <div class="price">₹100</div>
+
+                    <button onclick="addToCart('Donut',100)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                     <img src="images/cheesecake.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>Cheese Cake</h3>
+
+                    <p>
+                        Creamy cheesecake
+                    </p>
+
+                    <div class="price">₹120</div>
+
+                    <button onclick="addToCart('Cheese Cake',120)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                     <img src="images/blueberrycake.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>Blueberry Cheese Cake</h3>
+
+                    <p>
+                        Blueberry cheesecake
+                    </p>
+
+                    <div class="price">₹130</div>
+
+                    <button onclick="addToCart('Blueberry Cheese Cake',130)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                    <img src="images/paneersalad.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>Paneer Salad</h3>
+
+                    <p>
+                        Fresh vegetables and paneer
+                    </p>
+
+                    <div class="price">₹220</div>
+
+                    <button onclick="addToCart('Paneer Salad',220)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                     <img src="images/chickensalad.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>Chicken Salad</h3>
+
+                    <p>
+                        Fresh vegetables and chicken
+                    </p>
+
+                    <div class="price">₹240</div>
+
+                    <button onclick="addToCart('Chicken Salad',240)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                     <img src="images/paneerwrap.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>Paneer Wrap</h3>
+
+                    <p>
+                        Spicy paneer vegetable wrap
+                    </p>
+
+                    <div class="price">₹150</div>
+
+                    <button onclick="addToCart('Paneer Wrap',150)">
+                        Add Order
+                    </button>
+
+                </div>
+
+
+                <div class="food-card">
+
+                     <img src="images/chickenwrap.jpg" width="200" height="200" style="display:block;margin:auto auto 10px ;border-radius:15px;object-fit:cover">
+
+
+
+                    <h3>Grilled Chicken Wrap</h3>
+
+                    <p>
+                        Grilled chicken wrap
+                    </p>
+
+                    <div class="price">₹170</div>
+
+                    <button onclick="addToCart('Grilled Chicken Wrap',170)">
+                        Add Order
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- CURRENT ORDER -->
+
+            <div class="form-box">
+
+                <h2>🛒 Current Order</h2>
+
+                <div id="cartItems">
+
+                    <p>No items added yet.</p>
+
+                </div>
+
+                <hr>
+
+                <br>
+
+                <h3 id="cartTotal">
+                    Cart Total: ₹0
+                </h3>
+
+                <br>
+
+                <label>Customer Name</label>
+
+                <input
+                    type="text"
+                    id="orderCustomerName"
+                    placeholder="Enter customer name">
+
+
+                <label>Phone Number</label>
+
+                <input
+                    type="tel"
+                    id="orderCustomerPhone"
+                    placeholder="Enter phone number">
+
+
+                <label>Select Table</label>
+
+                <select id="orderTableSelect">
+
+                    <option value="">
+                        Takeaway / No Table
+                    </option>
+
+                    <option value="Table 01">
+                        Table 01
+                    </option>
+
+                    <option value="Table 02">
+                        Table 02
+                    </option>
+
+                    <option value="Table 03">
+                        Table 03
+                    </option>
+
+                    <option value="Table 04">
+                        Table 04
+                    </option>
+
+                    <option value="Table 05">
+                        Table 05
+                    </option>
+
+                    <option value="Table 06">
+                        Table 06
+                    </option>
+
+                </select>
+
+                <br>
+
+                <button onclick="placeOrder()">
+                    ✅ Place Order
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ORDERS ================= -->
+
+        <section id="orders"
+                 class="section">
+
+            <h2>Orders</h2>
+
+            <br>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Order ID</th>
+
+                        <th>Customer</th>
+
+                        <th>Items</th>
+
+                        <th>Amount</th>
+
+                        <th>Table</th>
+
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="orderTable">
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+        <!-- ================= TABLES ================= -->
+
+        <section id="tables"
+                 class="section">
+
+            <h2>Table Management</h2>
+
+            <p>
+                Click a table button to change its status.
+            </p>
+
+            <div class="tables">
+
+                <div class="table-card available">
+
+                    <h3>Table 01</h3>
+
+                    <p>4 Seats</p>
+
+                    <button onclick="changeTable(this)">
+                        Available
+                    </button>
+
+                </div>
+
+
+                <div class="table-card occupied">
+
+                    <h3>Table 02</h3>
+
+                    <p>2 Seats</p>
+
+                    <button onclick="changeTable(this)">
+                        Occupied
+                    </button>
+
+                </div>
+
+
+                <div class="table-card available">
+
+                    <h3>Table 03</h3>
+
+                    <p>6 Seats</p>
+
+                    <button onclick="changeTable(this)">
+                        Available
+                    </button>
+
+                </div>
+
+
+                <div class="table-card reserved">
+
+                    <h3>Table 04</h3>
+
+                    <p>4 Seats</p>
+
+                    <button onclick="changeTable(this)">
+                        Reserved
+                    </button>
+
+                </div>
+
+
+                <div class="table-card available">
+
+                    <h3>Table 05</h3>
+
+                    <p>2 Seats</p>
+
+                    <button onclick="changeTable(this)">
+                        Available
+                    </button>
+
+                </div>
+
+
+                <div class="table-card available">
+
+                    <h3>Table 06</h3>
+
+                    <p>4 Seats</p>
+
+                    <button onclick="changeTable(this)">
+                        Available
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= RESERVATIONS ================= -->
+
+        <section id="reservation"
+                 class="section">
+
+            <h2>Table Reservation</h2>
+
+            <br>
+
+            <div class="form-box">
+
+                <form onsubmit="reserveTable(event)">
+
+                    <label>Customer Name</label>
+
+                    <input
+                        type="text"
+                        id="customerName"
+                        placeholder="Enter customer name"
+                        required>
+
+
+                    <label>Phone Number</label>
+
+                    <input
+                        type="tel"
+                        id="reservationPhone"
+                        placeholder="Enter phone number"
+                        required>
+
+
+                    <label>Date</label>
+
+                    <input
+                        type="date"
+                        id="reservationDate"
+                        required>
+
+
+                    <label>Number of Guests</label>
+
+                    <select id="guestCount"
+                            required>
+
+                        <option value="">
+                            Select guests
+                        </option>
+
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+
+                    </select>
+
+
+                    <label>Select Table</label>
+
+                    <select id="reservationTable"
+                            required>
+
+                        <option value="">
+                            Select table
+                        </option>
+
+                        <option value="Table 01">
+                            Table 01
+                        </option>
+
+                        <option value="Table 02">
+                            Table 02
+                        </option>
+
+                        <option value="Table 03">
+                            Table 03
+                        </option>
+
+                        <option value="Table 04">
+                            Table 04
+                        </option>
+
+                        <option value="Table 05">
+                            Table 05
+                        </option>
+
+                        <option value="Table 06">
+                            Table 06
+                        </option>
+
+                    </select>
+
+                    <br>
+
+                    <button type="submit">
+                        Reserve Table
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <div class="form-box">
+
+                <h2>Reservations</h2>
+
+                <div id="reservationList">
+
+                    <p>No reservations yet.</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= BILLING ================= -->
+
+        <section id="billing"
+                 class="section">
+
+            <h2>Billing</h2>
+
+            <br>
+
+
+            <div class="form-box">
+
+                <h3>Manual Billing</h3>
+
+                <br>
+
+                <label>Item Price</label>
+
+                <input
+                    type="number"
+                    id="billAmount"
+                    placeholder="Enter amount"
+                    min="0">
+
+
+                <label>Quantity</label>
+
+                <input
+                    type="number"
+                    id="quantity"
+                    value="1"
+                    min="1">
+
+
+                <button onclick="calculateBill()">
+                    Calculate Bill
+                </button>
+
+
+                <div id="billResult">
+
+                    <h3>
+                        Total: ₹0
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-box">
+
+                <h2>Current Order Bill</h2>
+
+                <div id="billingItems">
+
+                    <p>No current order.</p>
+
+                </div>
+
+                <hr>
+
+                <br>
+
+                <p>
+                    Subtotal:
+                    <strong id="billingSubtotal">
+                        ₹0
+                    </strong>
+                </p>
+
+                <p>
+                    GST (5%):
+                    <strong id="billingGST">
+                        ₹0
+                    </strong>
+                </p>
+
+                <br>
+
+                <h2>
+                    Grand Total:
+                    <span id="billingTotal">
+                        ₹0
+                    </span>
+                </h2>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================================= -->
+        <!-- ================= SUPPLIER ====================== -->
+        <!-- ================================================= -->
+
+       <section id="supplier" class="section">
+    <h2>📦 Supplier & Quantity</h2>
+    <p>Manage suppliers and stock quantities.</p>
+    <br>
+    <div class="form-box">
+        <h2>Add Supplier Stock</h2>
+        <br>
+        <label>Supplier Name</label>
+        <input type="text" id="supplierName" placeholder="Enter supplier name">
+
+        <label>Item Name</label>
+        <input type="text" id="supplierItem" placeholder="Enter item name">
+
+        <label>Quantity</label>
+        <input type="number" id="supplierQuantity" placeholder="Enter quantity" min="1">
+
+        <label>Unit</label>
+        <select id="supplierUnit">
+            <option value="Kg">Kg</option>
+            <option value="Litres">Litres</option>
+            <option value="Pieces">Pieces</option>
+            <option value="Packets">Packets</option>
+            <option value="Bottles">Bottles</option>
+        </select>
+
+        <label>Amount (₹)</label>
+        <input type="number" id="supplierAmount" min="0" placeholder="Enter amount">
+
+        <label>Used</label>
+        <input type="number" id="supplierUsed" min="0" value="0">
+        <br>
+        <button onclick="addSupplier()">➕ Add Supplier</button>
+    </div>
+
+    <div class="form-box">
+        <h2>Supplier Stock</h2>
+        <br>
+        <table>
+            <thead>
+                <tr><th>Supplier</th><th>Item</th><th>Quantity</th><th>Unit</th><th>Amount</th><th>Used</th><th>Left</th><th>Action</th></tr>
+            </thead>
+            <tbody id="supplierTable"></tbody>
+        </table>
+    </div>
+</section>
+
+    </div>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+/* ================= LOGIN ================= */
+
+function login() {
+
+    const username =
+        document.getElementById(
+            "loginUsername"
+        ).value.trim();
+
+    const password =
+        document.getElementById(
+            "loginPassword"
+        ).value;
+
+    const error =
+        document.getElementById(
+            "loginError"
+        );
+
+
+    if (
+        username === "admin" &&
+        password === "1234"
+    ) {
+
+        sessionStorage.setItem(
+            "brewBytesLoggedIn",
+            "true"
+        );
+
+
+        document.getElementById(
+            "loginPage"
+        ).style.display = "none";
+
+
+        document.getElementById(
+            "appContent"
+        ).style.display = "block";
+
+
+        error.innerText = "";
+
+    }
+
+    else {
+
+        error.innerText =
+            "Invalid username or password.";
+
+    }
+
+}
+
+
+/* ================= LOGOUT ================= */
+
+function logout() {
+
+    sessionStorage.removeItem(
+        "brewBytesLoggedIn"
+    );
+
+
+    document.getElementById(
+        "appContent"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "loginPage"
+    ).style.display = "flex";
+
+
+    document.getElementById(
+        "loginUsername"
+    ).value = "";
+
+
+    document.getElementById(
+        "loginPassword"
+    ).value = "";
+
+}
+
+
+/* ================= DATA ================= */
+
+const STORAGE_KEY =
+    "brewBytesCafeDataFinal";
+
+
+let data =
+    JSON.parse(
+        localStorage.getItem(
+            STORAGE_KEY
+        )
+    );
+
+
+if (!data) {
+
+    data = {
+
+        orders: [],
+
+        customers: [],
+
+        nextOrderId: 1001,
+
+        tables: {
+
+            "Table 01": "Available",
+            "Table 02": "Occupied",
+            "Table 03": "Available",
+            "Table 04": "Reserved",
+            "Table 05": "Available",
+            "Table 06": "Available"
+
+        },
+
+        reservations: [],
+
+        suppliers: []
+
+    };
+
+}
+
+
+/* ================= DATA SAFETY ================= */
+
+if (!Array.isArray(data.orders)) {
+
+    data.orders = [];
+
+}
+
+
+if (!Array.isArray(data.customers)) {
+
+    data.customers = [];
+
+}
+
+
+if (!Array.isArray(data.reservations)) {
+
+    data.reservations = [];
+
+}
+
+
+if (!Array.isArray(data.suppliers)) {
+
+    data.suppliers = [];
+
+}
+
+
+if (!data.tables) {
+
+    data.tables = {
+
+        "Table 01": "Available",
+        "Table 02": "Occupied",
+        "Table 03": "Available",
+        "Table 04": "Reserved",
+        "Table 05": "Available",
+        "Table 06": "Available"
+
+    };
+
+}
+
+
+if (!data.nextOrderId) {
+
+    data.nextOrderId = 1001;
+
+}
+
+
+function saveData() {
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(data)
+    );
+
+}
+
+
+/* ================= VARIABLES ================= */
+
+let cart = [];
+
+
+/* ================= DATE ================= */
+
+function updateDate() {
+
+    document.getElementById(
+        "date"
+    ).innerText =
+        new Date().toLocaleDateString(
+            "en-IN",
+            {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric"
+            }
+        );
+
+}
+
+
+function getToday() {
+
+    const d = new Date();
+
+    return (
+        d.getFullYear() +
+        "-" +
+        String(
+            d.getMonth() + 1
+        ).padStart(2, "0") +
+        "-" +
+        String(
+            d.getDate()
+        ).padStart(2, "0")
+    );
+
+}
+
+
+/* ================= NAVIGATION ================= */
+
+function showSection(
+    sectionId,
+    element
+) {
+
+    document
+        .querySelectorAll(".section")
+        .forEach(
+            function(section) {
+
+                section.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    document
+        .getElementById(sectionId)
+        .classList.add("active");
+
+
+    document
+        .querySelectorAll(".menu a")
+        .forEach(
+            function(link) {
+
+                link.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    element.classList.add("active");
+
+}
+
+
+/* ================= CART ================= */
+
+function addToCart(
+    item,
+    price
+) {
+
+    const existing =
+        cart.find(
+            function(product) {
+
+                return product.item === item;
+
+            }
+        );
+
+
+    if (existing) {
+
+        existing.quantity++;
+
+    }
+
+    else {
+
+        cart.push({
+
+            item: item,
+
+            price: price,
+
+            quantity: 1
+
+        });
+
+    }
+
+
+    updateCart();
+
+}
+
+
+function updateCart() {
+
+    const container =
+        document.getElementById(
+            "cartItems"
+        );
+
+
+    if (cart.length === 0) {
+
+        container.innerHTML =
+            "<p>No items added yet.</p>";
+
+        document.getElementById(
+            "cartTotal"
+        ).innerText =
+            "Cart Total: ₹0";
+
+        updateBilling();
+
+        return;
+
+    }
+
+
+    let html = "";
+
+    let total = 0;
+
+
+    cart.forEach(
+        function(product, index) {
+
+            const itemTotal =
+                product.price *
+                product.quantity;
+
+
+            total += itemTotal;
+
+
+            html += `
+
+                <div class="cart-item">
+
+                    <div>
+
+                        <strong>
+                            ${product.item}
+                        </strong>
+
+                        <br>
+
+                        ₹${product.price}
+                        ×
+                        ${product.quantity}
+
+                        <br>
+
+                        Item Total:
+                        ₹${itemTotal}
+
+                    </div>
+
+                    <div>
+
+                        <button
+                            onclick="decreaseQuantity(${index})">
+                            -
+                        </button>
+
+                        <button
+                            onclick="increaseQuantity(${index})">
+                            +
+                        </button>
+
+                        <button
+                            onclick="removeFromCart(${index})">
+                            Remove
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    container.innerHTML =
+        html;
+
+
+    document.getElementById(
+        "cartTotal"
+    ).innerText =
+        "Cart Total: ₹" +
+        total.toFixed(2);
+
+
+    updateBilling();
+
+}
+
+
+function increaseQuantity(index) {
+
+    cart[index].quantity++;
+
+    updateCart();
+
+}
+
+
+function decreaseQuantity(index) {
+
+    if (
+        cart[index].quantity > 1
+    ) {
+
+        cart[index].quantity--;
+
+    }
+
+    else {
+
+        cart.splice(index, 1);
+
+    }
+
+
+    updateCart();
+
+}
+
+
+function removeFromCart(index) {
+
+    cart.splice(index, 1);
+
+    updateCart();
+
+}
+
+
+/* ================= CUSTOMER ================= */
+
+function addCustomer(
+    name,
+    phone
+) {
+
+    if (
+        !name ||
+        name === "Walk-in Customer"
+    ) {
+
+        return;
+
+    }
+
+
+    const exists =
+        data.customers.some(
+            function(customer) {
+
+                return (
+                    customer.phone === phone ||
+                    customer.name === name
+                );
+
+            }
+        );
+
+
+    if (!exists) {
+
+        data.customers.push({
+
+            name: name,
+
+            phone: phone
+
+        });
+
+    }
+
+}
+
+
+/* ================= PLACE ORDER ================= */
+
+function placeOrder() {
+
+    if (
+        cart.length === 0
+    ) {
+
+        alert(
+            "Please add at least one item."
+        );
+
+        return;
+
+    }
+
+
+    const customerName =
+        document.getElementById(
+            "orderCustomerName"
+        ).value.trim();
+
+
+    const customerPhone =
+        document.getElementById(
+            "orderCustomerPhone"
+        ).value.trim();
+
+
+    const table =
+        document.getElementById(
+            "orderTableSelect"
+        ).value;
+
+
+    const customer =
+        customerName ||
+        "Walk-in Customer";
+
+
+    let itemNames = [];
+
+    let subtotal = 0;
+
+
+    cart.forEach(
+        function(product) {
+
+            itemNames.push(
+                product.item +
+                " x" +
+                product.quantity
+            );
+
+
+            subtotal +=
+                product.price *
+                product.quantity;
+
+        }
+    );
+
+
+    const gst =
+        subtotal * 0.05;
+
+
+    const total =
+        subtotal + gst;
+
+
+    const order = {
+
+        id: data.nextOrderId,
+
+        customer: customer,
+
+        phone: customerPhone,
+
+        items:
+            itemNames.join(", "),
+
+        amount: total,
+
+        table:
+            table || "Takeaway",
+
+        status: "Pending",
+
+        date:
+            new Date().toLocaleString(
+                "en-IN"
+            ),
+
+        dateKey:
+            getToday(),
+
+        cartItems:
+            cart
+
+    };
+
+
+    data.orders.push(order);
+
+
+    addCustomer(
+        customer,
+        customerPhone
+    );
+
+
+    if (table) {
+
+        data.tables[table] =
+            "Occupied";
+
+    }
+
+
+    data.nextOrderId++;
+
+
+    saveData();
+
+
+    alert(
+        "Order #" +
+        order.id +
+        " placed successfully!"
+    );
+
+
+    cart = [];
+
+
+    document.getElementById(
+        "orderCustomerName"
+    ).value = "";
+
+
+    document.getElementById(
+        "orderCustomerPhone"
+    ).value = "";
+
+
+    document.getElementById(
+        "orderTableSelect"
+    ).value = "";
+
+
+    updateCart();
+
+    renderOrders();
+
+    loadTables();
+
+    updateDashboard();
+
+}
+
+
+/* ================= ORDERS ================= */
+
+function renderOrders() {
+
+    const orderTable =
+        document.getElementById(
+            "orderTable"
+        );
+
+
+    orderTable.innerHTML = "";
+
+
+    if (
+        data.orders.length === 0
+    ) {
+
+        orderTable.innerHTML = `
+
+            <tr>
+
+                <td colspan="6">
+                    No orders recorded yet.
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    [...data.orders]
+        .reverse()
+        .forEach(
+            function(order) {
+
+                const row =
+                    document.createElement(
+                        "tr"
+                    );
+
+
+                const statusClass =
+                    order.status ===
+                    "Completed"
+                        ? "completed"
+                        : "pending";
+
+
+                row.innerHTML = `
+
+                    <td>
+                        #${order.id}
+                    </td>
+
+                    <td>
+                        ${order.customer}
+                    </td>
+
+                    <td>
+                        ${order.items}
+                    </td>
+
+                    <td>
+                        ₹${Number(
+                            order.amount
+                        ).toFixed(2)}
+                    </td>
+
+                    <td>
+                        ${order.table}
+                    </td>
+
+                    <td>
+
+                        <span
+                            class="status ${statusClass}"
+                            onclick="toggleStatus(${order.id})">
+
+                            ${order.status}
+
+                        </span>
+
+                    </td>
+
+                `;
+
+
+                orderTable.appendChild(row);
+
+            }
+        );
+
+}
+
+
+function toggleStatus(id) {
+
+    const order =
+        data.orders.find(
+            function(item) {
+
+                return item.id === id;
+
+            }
+        );
+
+
+    if (!order) {
+
+        return;
+
+    }
+
+
+    order.status =
+        order.status === "Pending"
+            ? "Completed"
+            : "Pending";
+
+
+    saveData();
+
+    renderOrders();
+
+}
+
+
+/* ================= TABLES ================= */
+
+function changeTable(button) {
+
+    const card =
+        button.parentElement;
+
+
+    const tableName =
+        card.querySelector(
+            "h3"
+        ).innerText;
+
+
+    const current =
+        data.tables[tableName];
+
+
+    let newStatus;
+
+
+    if (
+        current === "Available"
+    ) {
+
+        newStatus = "Occupied";
+
+    }
+
+    else if (
+        current === "Occupied"
+    ) {
+
+        newStatus = "Reserved";
+
+    }
+
+    else {
+
+        newStatus = "Available";
+
+    }
+
+
+    data.tables[tableName] =
+        newStatus;
+
+
+    saveData();
+
+    loadTables();
+
+    updateDashboard();
+
+}
+
+
+function loadTables() {
+
+    document
+        .querySelectorAll(".table-card")
+        .forEach(
+            function(card) {
+
+                const name =
+                    card.querySelector(
+                        "h3"
+                    ).innerText;
+
+
+                const status =
+                    data.tables[name] ||
+                    "Available";
+
+
+                const button =
+                    card.querySelector(
+                        "button"
+                    );
+
+
+                card.classList.remove(
+                    "available",
+                    "occupied",
+                    "reserved"
+                );
+
+
+                button.innerText =
+                    status;
+
+
+                card.classList.add(
+                    status.toLowerCase()
+                );
+
+            }
+        );
+
+
+    updateAvailableTables();
+
+}
+
+
+function updateAvailableTables() {
+
+    let count = 0;
+
+
+    Object.values(
+        data.tables
+    ).forEach(
+        function(status) {
+
+            if (
+                status === "Available"
+            ) {
+
+                count++;
+
+            }
+
+        }
+    );
+
+
+    document.getElementById(
+        "availableTables"
+    ).innerText =
+        count;
+
+}
+
+
+/* ================= RESERVATIONS ================= */
+
+function reserveTable(event) {
+
+    event.preventDefault();
+
+
+    const name =
+        document.getElementById(
+            "customerName"
+        ).value.trim();
+
+
+    const phone =
+        document.getElementById(
+            "reservationPhone"
+        ).value.trim();
+
+
+    const date =
+        document.getElementById(
+            "reservationDate"
+        ).value;
+
+
+    const guests =
+        document.getElementById(
+            "guestCount"
+        ).value;
+
+
+    const table =
+        document.getElementById(
+            "reservationTable"
+        ).value;
+
+
+    if (!table) {
+
+        alert(
+            "Please select a table."
+        );
+
+        return;
+
+    }
+
+
+    data.reservations.push({
+
+        name: name,
+
+        phone: phone,
+
+        date: date,
+
+        guests: guests,
+
+        table: table
+
+    });
+
+
+    addCustomer(
+        name,
+        phone
+    );
+
+
+    data.tables[table] =
+        "Reserved";
+
+
+    saveData();
+
+    renderReservations();
+
+    loadTables();
+
+    updateDashboard();
+
+
+    alert(
+        "Table reserved successfully!"
+    );
+
+
+    event.target.reset();
+
+}
+
+
+function renderReservations() {
+
+    const list =
+        document.getElementById(
+            "reservationList"
+        );
+
+
+    list.innerHTML = "";
+
+
+    if (
+        data.reservations.length === 0
+    ) {
+
+        list.innerHTML =
+            "<p>No reservations yet.</p>";
+
+        return;
+
+    }
+
+
+    [...data.reservations]
+        .reverse()
+        .forEach(
+            function(reservation) {
+
+                const div =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                div.className =
+                    "reservation-item";
+
+
+                div.innerHTML = `
+
+                    <strong>
+                        ${reservation.name}
+                    </strong>
+
+                    <br>
+
+                    📞 ${reservation.phone}
+
+                    <br>
+
+                    📅 ${reservation.date}
+
+                    <br>
+
+                    👥 ${reservation.guests}
+                    Guests
+
+                    <br>
+
+                    🪑 ${reservation.table}
+
+                    <br><br>
+
+                    <span class="status reserved">
+                        Reserved
+                    </span>
+
+                `;
+
+
+                list.appendChild(div);
+
+            }
+        );
+
+}
+
+
+/* ================= BILLING ================= */
+
+function calculateBill() {
+
+    const amount =
+        Number(
+            document.getElementById(
+                "billAmount"
+            ).value
+        );
+
+
+    const quantity =
+        Number(
+            document.getElementById(
+                "quantity"
+            ).value
+        );
+
+
+    if (
+        amount <= 0 ||
+        quantity < 1
+    ) {
+
+        alert(
+            "Please enter valid amount and quantity."
+        );
+
+        return;
+
+    }
+
+
+    const subtotal =
+        amount * quantity;
+
+
+    const gst =
+        subtotal * 0.05;
+
+
+    const total =
+        subtotal + gst;
+
+
+    document.getElementById(
+        "billResult"
+    ).innerHTML = `
+
+        <h3>
+            Total including 5% GST:
+            ₹${total.toFixed(2)}
+        </h3>
+
+    `;
+
+}
+
+
+function updateBilling() {
+
+    const container =
+        document.getElementById(
+            "billingItems"
+        );
+
+
+    if (
+        cart.length === 0
+    ) {
+
+        container.innerHTML =
+            "<p>No current order.</p>";
+
+
+        document.getElementById(
+            "billingSubtotal"
+        ).innerText =
+            "₹0";
+
+
+        document.getElementById(
+            "billingGST"
+        ).innerText =
+            "₹0";
+
+
+        document.getElementById(
+            "billingTotal"
+        ).innerText =
+            "₹0";
+
+
+        return;
+
+    }
+
+
+    let html = "";
+
+    let subtotal = 0;
+
+
+    cart.forEach(
+        function(product) {
+
+            const itemTotal =
+                product.price *
+                product.quantity;
+
+
+            subtotal += itemTotal;
+
+
+            html += `
+
+                <p>
+                    ${product.item}
+                    × ${product.quantity}
+                    =
+                    ₹${itemTotal}
+                </p>
+
+            `;
+
+        }
+    );
+
+
+    const gst =
+        subtotal * 0.05;
+
+
+    const total =
+        subtotal + gst;
+
+
+    container.innerHTML =
+        html;
+
+
+    document.getElementById(
+        "billingSubtotal"
+    ).innerText =
+        "₹" +
+        subtotal.toFixed(2);
+
+
+    document.getElementById(
+        "billingGST"
+    ).innerText =
+        "₹" +
+        gst.toFixed(2);
+
+
+    document.getElementById(
+        "billingTotal"
+    ).innerText =
+        "₹" +
+        total.toFixed(2);
+
+}
+
+
+/* ================= DASHBOARD ================= */
+
+function updateDashboard() {
+
+    let todaySales = 0;
+
+
+    data.orders.forEach(
+        function(order) {
+
+            if (
+                order.dateKey ===
+                getToday()
+            ) {
+
+                todaySales +=
+                    Number(
+                        order.amount
+                    );
+
+            }
+
+        }
+    );
+
+
+    document.getElementById(
+        "totalSales"
+    ).innerText =
+        "₹" +
+        todaySales.toFixed(2);
+
+
+    document.getElementById(
+        "orderCount"
+    ).innerText =
+        data.orders.length;
+
+
+    document.getElementById(
+        "customerCount"
+    ).innerText =
+        data.customers.length;
+
+
+    updateAvailableTables();
+
+}
+
+
+/* ===================================================== */
+/* ================= SUPPLIER =========================== */
+/* ===================================================== */
+
+function addSupplier() {
+    const supplier = document.getElementById("supplierName").value.trim();
+    const item = document.getElementById("supplierItem").value.trim();
+    const quantity = Number(document.getElementById("supplierQuantity").value);
+    const unit = document.getElementById("supplierUnit").value;
+    const amount = Number(document.getElementById("supplierAmount").value);
+    const used = Number(document.getElementById("supplierUsed").value);
+
+    if (supplier === "" || item === "" || quantity <= 0 || used > quantity) {
+        alert("Please enter supplier, item and valid quantity.");
+        return;
+    }
+
+    data.suppliers.push({ supplier, item, quantity, unit, amount, used });
+    saveData();
+    renderSuppliers();
+
+    document.getElementById("supplierName").value = "";
+    document.getElementById("supplierItem").value = "";
+    document.getElementById("supplierQuantity").value = "";
+    document.getElementById("supplierUnit").value = "Kg";
+    document.getElementById("supplierAmount").value = "";
+    document.getElementById("supplierUsed").value = 0;
+
+    alert("Supplier stock added successfully!");
+}
+
+function renderSuppliers() {
+    const table = document.getElementById("supplierTable");
+    table.innerHTML = "";
+
+    if (data.suppliers.length === 0) {
+        table.innerHTML = `<tr><td colspan="8">No supplier stock added yet.</td></tr>`;
+        return;
+    }
+
+    data.suppliers.forEach(function (s, index) {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${s.supplier}</td>
+            <td>${s.item}</td>
+            <td>${s.quantity}</td>
+            <td>${s.unit}</td>
+            <td>₹${s.amount || 0}</td>
+            <td>${s.used || 0}</td>
+            <td>${s.quantity - (s.used || 0)}</td>
+            <td>
+                <button onclick="useStock(${index})">➖ Use</button>
+                <button onclick="deleteSupplier(${index})">🗑️ Delete</button>
+            </td>`;
+        table.appendChild(row);
+    });
+}
+
+function useStock(i) {
+    const s = data.suppliers[i];
+    const u = Number(prompt("Quantity used now:"));
+    if (u > 0 && (s.used || 0) + u <= s.quantity) {
+        s.used = (s.used || 0) + u;
+        saveData();
+        renderSuppliers();
+    } else alert("Invalid quantity");
+}
+
+function deleteSupplier(index) {
+    if (confirm("Delete this supplier record?")) {
+        data.suppliers.splice(index, 1);
+        saveData();
+        renderSuppliers();
+    }
+}
+
+/* ================= START ================= */
+
+updateDate();
+
+updateDashboard();
+
+updateCart();
+
+renderOrders();
+
+renderReservations();
+
+loadTables();
+
+renderSuppliers();
+
+checkLogin();
+
+</script>
+
+</body>
+
+</html>
